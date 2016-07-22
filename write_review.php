@@ -15,6 +15,9 @@
             new HttpParam(HTTP_POST, $foodType),
             new HttpParam(HTTP_POST, $reviewDetail),
     ));
+
+    $userToken = md5($userToken);
+
     $reviewImage = $_FILES['reviewImage'];
     $fileName = "img/".time()."_img.jpg";
     move_uploaded_file($reviewImage['tmp_name'], $fileName);

@@ -9,9 +9,10 @@
 	
 	check_params(array(
 		new HttpParam(HTTP_POST, $userToken),
-        new HttpParam(HTTP_POST, $userName),
+                new HttpParam(HTTP_POST, $userName),
+                new HttpParam(HTTP_POST, $userImage),
 	));
-    
+    $userToken = md5($userToken);
     $nowTime = date("Y-m-d H:i:s", time());
     
     $query = "
@@ -44,6 +45,8 @@
     $query = "
             update USER 
                set 
+                   `userName`               =   '$userName',
+                   `userImage`              =   '$userImage',
                    `userLastLoginTime`      =   '$nowTime'
              where 
                    `userToken`              =   '$userToken'
